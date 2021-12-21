@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-ROOT="$(readlink -f "$HOME/.bashrc")"
-ROOT="$(dirname "$(dirname "$ROOT")")"
+ROOT="$(dirname "$(readlink -f "$(pwd)/$0")")"
 
 for file in $(echo "$ROOT"/setup/*) ; do
     # source file
