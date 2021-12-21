@@ -21,6 +21,11 @@ if ! which sudo > /dev/null; then
     to_install="$to_install sudo"
 fi
 
+if [ ! -f /etc/bash_completion ] ; then
+    echo "Missing sudo."
+    to_install="$to_install bash-completion"
+fi
+
 if [ -n "$to_install" ] ; then
     apt update
     apt install $to_install
