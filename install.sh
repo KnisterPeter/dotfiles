@@ -1,7 +1,15 @@
 #!/usr/bin/env bash
 
-find ./home -type f -exec sh -c '
-    src="$(readlink -f $1)"
-    dst="$HOME/$(basename $1)"
+ROOT="$(readlink -f "$HOME/.bashrc")"
+ROOT="$(dirname "$(dirname "$ROOT")")"
+
+for file in $(echo "$ROOT"/setup/*) ; do
+    # source file
+    . "$file"
+done
+
+for file in $(ls -A "$ROOT"/home/) ; do
+    src=$(readlink -f "$ROOT/home/$file")
+    dst="$HOME/$(basename $src)"
     [ ! -e "$dst" ] && ln -s "$src" "$dst"
-' sh {} \;
+done
