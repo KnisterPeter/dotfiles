@@ -16,6 +16,11 @@ if ! which gpg > /dev/null; then
     to_install="$to_install gpg"
 fi
 
+if ! which sudo > /dev/null; then
+    echo "Missing sudo."
+    to_install="$to_install sudo"
+fi
+
 if [ -n "$to_install" ] ; then
     apt update
     apt install $to_install
