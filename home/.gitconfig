@@ -1,0 +1,56 @@
+[user]
+	name = Markus Wolf
+	email = mail@markus-wolf.de
+	signingkey = 46051C9BE153B7A5
+[color]
+	branch = auto
+	diff = auto
+	status = auto
+[core]
+	#editor = code --wait
+[push]
+	default = simple
+[alias]
+	# log with graph
+	ls = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
+	la = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+	# log without merges
+	lsnm = ls --no-merges
+	# ls but without graph
+	lsng = log --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d'
+	# log branch + parents
+	lsbo = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --first-parent
+	
+	st = status
+	grep = grep -Ii
+
+	amend-all = "!f() { git add . && git commit --amend --no-edit; }; f"
+	amend = commit --amend --no-edit
+
+	fixup-select-commit = "!f() { id=\"$(git lsng |fzf |cut -d ' ' -f 1)\"; [ -n \"$id\" ] && git commit --fixup \"$id\"; }; f"
+	fixup-rebase-branch = "!f() { id=\"$(git lsng |fzf |cut -d ' ' -f 1)\"; [ -n \"$id\" ] && git rebase --interactive --autosquash \"$id\"; }; f"
+	rebase-interactive = "!f() { id=\"$(git lsng |fzf |cut -d ' ' -f 1)\"; [ -n \"$id\" ] && git rebase --interactive \"$id\"; }; f"
+	ln = log --oneline
+
+	wip-save = "!f() { git add . && git wip-save-staged; }; f" 
+	wip-save-staged = "!f() { git commit -m 'wip: ...' --no-verify; }; f" 
+	wip-restore = "!f() { [ $(git log --oneline -1 --grep='wip:' |wc -l) -gt 0 ] && git reset HEAD~1 || echo 'No work-in-progress found on branch'; }; f"
+
+	reom = "!f() { git fetch && git rebase origin/master; }; f"
+	fpush = push --force-with-lease
+	reomy = "!f() { git reom && yarn; }; f"
+
+	patch-url = "!f() { curl -L "$1" | git am -3; }; f"
+
+[commit]
+	gpgSign = true
+	verbose = true
+[pull]
+	rebase = true
+[rebase]
+	autoStash = true
+
+[init]
+	defaultBranch = main
+

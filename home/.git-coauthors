@@ -1,0 +1,32 @@
+{
+  "coauthors": {
+    "bb": {
+      "name": "Björn Brauer",
+      "email": "zaubernerd@zaubernerd.de"
+    },
+    "bbnw": {
+      "name": "Björn Brauer",
+      "email": "bjoern.brauer@new-work.se"
+    },
+    "ns": {
+      "name": "Nicolai Stange",
+      "email": "nicstange@gmail.com"
+    },
+    "mnnw": {
+      "name": "Marcus Noll",
+      "email": "markus.noll@new-work.se"
+    },
+    "jh": {
+      "name": "Jonas Holland",
+      "email": "jonas.holland@new-work.se"
+    },
+    "rknw": {
+      "name": "Robert Kowalski",
+      "email": "robert.kowalski@new-work.se"
+    },
+    "phnw": {
+      "name": "Philipp Hinrichsen",
+      "email": "philipp.hinrichsen@new-work.se"
+    }
+  }
+}
