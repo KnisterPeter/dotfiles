@@ -1,9 +1,8 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 ROOT="$(dirname "$(readlink -f "$(pwd)/$0")")"
 
 for file in $(echo "$ROOT"/setup/*) ; do
-    # source file
     . "$file"
 done
 

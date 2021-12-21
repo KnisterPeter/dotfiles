@@ -7,11 +7,3 @@ if [ ! -f /tmp/1password.zip ] ; then
     gpg --keyserver hkp://keyserver.ubuntu.com:80 --receive-keys 3FEF9748469ADBE15DA7CA80AC2D62742012EA22
     gpg --verify /tmp/op.sig /tmp/op
 fi
-
-if [ ! -f /tmp/email ] ; then
-    read -p "Enter your 1Password username: " email
-    echo "$email" > /tmp/email
-    eval "$(/tmp/op signin my "$email")"
-else
-    eval "$(/tmp/op signin my)"
-fi
