@@ -9,5 +9,10 @@ done
 for file in $(ls -A "$ROOT"/home/) ; do
     src=$(readlink -f "$ROOT/home/$file")
     dst="$HOME/$(basename $src)"
-    [ ! -e "$dst" ] && ln -s "$src" "$dst"
+    if [ ! -L "$dst" ] ; then
+        if [ -e "$dst" ] ; then
+            mv "$dst" "$dst.bak"
+        fi
+        ln -s "$src" "$dst"
+    fi
 done
