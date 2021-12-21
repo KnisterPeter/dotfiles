@@ -28,5 +28,5 @@ fi
 
 if [ -n "$to_install" ] ; then
     apt update
-    apt install $to_install
+    apt install -yy $to_install
 fi
