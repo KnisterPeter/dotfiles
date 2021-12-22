@@ -27,6 +27,6 @@ if [ ! -f /etc/bash_completion ] ; then
 fi
 
 if [ -n "$to_install" ] ; then
-    apt update
-    apt install -yy $to_install
+    sudo apt update
+    sudo apt install -yy $to_install
 fi
