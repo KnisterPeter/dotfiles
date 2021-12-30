@@ -26,6 +26,11 @@ if [ ! -f /etc/bash_completion ] ; then
     to_install="$to_install bash-completion"
 fi
 
+if ! which fzf > /dev/null; then
+    echo "Missing fzf."
+    to_install="$to_install fzf"
+fi
+
 if [ -n "$to_install" ] ; then
     sudo apt update
     sudo apt install -yy $to_install
