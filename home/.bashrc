@@ -83,10 +83,9 @@ fi
 # Prompt
 
 for file in $(echo "$ROOT"/prompt/*) ; do
+  # shellcheck disable=SC1090
   source "$file"
 done
-
-PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 " (%s)")\$ '
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -101,14 +100,15 @@ esac
 # Tools
 
 for file in $(echo "$ROOT"/tools/*) ; do
+  # shellcheck disable=SC1090
   source "$file"
 done
-
 
 ################################################################################
 # Functions
 
 for file in $(echo "$ROOT"/functions/*) ; do
+  # shellcheck disable=SC1090
   source "$file"
 done
 
