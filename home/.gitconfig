@@ -28,6 +28,8 @@
 	amend-all = "!f() { git add . && git commit --amend --no-edit; }; f"
 	amend = commit --amend --no-edit
 
+	show-commit = "!f() { id=\"$(git lsng |fzf |cut -d ' ' -f 1)\"; [ -n \"$id\" ] && git show \"$id\"; }; f"
+
 	fixup-select-commit = "!f() { id=\"$(git lsng |fzf |cut -d ' ' -f 1)\"; [ -n \"$id\" ] && git commit --fixup \"$id\"; }; f"
 	fixup-rebase-branch = "!f() { id=\"$(git lsng |fzf |cut -d ' ' -f 1)\"; [ -n \"$id\" ] && git rebase --interactive --autosquash \"$id\"; }; f"
 	rebase-interactive = "!f() { id=\"$(git lsng |fzf |cut -d ' ' -f 1)\"; [ -n \"$id\" ] && git rebase --interactive \"$id\"; }; f"
