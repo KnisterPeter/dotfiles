@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+colorize() {
+    local pattern=$1
+    grep --color=always -E "$pattern|$"
+}
