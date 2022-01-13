@@ -22,7 +22,7 @@ if ! which sudo > /dev/null; then
 fi
 
 if [ ! -f /etc/bash_completion ] ; then
-    echo "Missing sudo."
+    echo "Missing bash-completion."
     to_install="$to_install bash-completion"
 fi
 
