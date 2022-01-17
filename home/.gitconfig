@@ -29,6 +29,7 @@
 	amend = commit --amend --no-edit
 
 	show-commit = "!f() { id=\"$(git lsng |fzf |cut -d ' ' -f 1)\"; [ -n \"$id\" ] && git show \"$id\"; }; f"
+	show-files = "!f() { id=\"$(git lsng |fzf |cut -d ' ' -f 1)\"; [ -n \"$id\" ] && git show --name-only \"$id\"; }; f"
 
 	fixup-select-commit = "!f() { id=\"$(git lsng |fzf |cut -d ' ' -f 1)\"; [ -n \"$id\" ] && git commit --fixup \"$id\"; }; f"
 	fixup-rebase-branch = "!f() { id=\"$(git lsng |fzf |cut -d ' ' -f 1)\"; [ -n \"$id\" ] && git rebase --interactive --autosquash \"$id\"; }; f"
