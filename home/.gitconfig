@@ -7,7 +7,7 @@
 	diff = auto
 	status = auto
 [core]
-	#editor = code --wait
+	editor = code --wait
 [push]
 	default = simple
 [alias]
