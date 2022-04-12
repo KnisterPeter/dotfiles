@@ -9,9 +9,10 @@ for file in $(echo "$ROOT"/setup/*) ; do
     . "$file"
 done
 
+# shellcheck disable=SC2045
 for file in $(ls -A "$ROOT"/home/) ; do
     src=$(readlink -f "$ROOT/home/$file")
-    dst="$HOME/$(basename $src)"
+    dst="$HOME/$(basename "$src")"
     if [ ! -L "$dst" ] ; then
         if [ -e "$dst" ] ; then
             mv "$dst" "$dst.bak"
