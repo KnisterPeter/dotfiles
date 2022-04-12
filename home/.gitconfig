@@ -35,6 +35,7 @@
 	fixup-rebase-branch = "!f() { id=\"$(git lsng |fzf |cut -d ' ' -f 1)\"; [ -n \"$id\" ] && git rebase --interactive --autosquash \"$id\"; }; f"
 	rebase-interactive = "!f() { id=\"$(git lsng |fzf |cut -d ' ' -f 1)\"; [ -n \"$id\" ] && git rebase --interactive \"$id\"; }; f"
 	ln = log --oneline
+	rebase-change-parent = "!f() { . $(dirname $(dirname $(readlink -f \"$HOME/.gitconfig\")))/functions/git-rebase-change-parent.sh ; git_rebase_change_parent ; }; f"
 
 	wip-save = "!f() { git add . && git wip-save-staged; }; f" 
 	wip-save-staged = "!f() { git commit -m 'wip: ...' --no-verify; }; f" 
