@@ -17,10 +17,9 @@
 	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
 	# log without merges
 	lsnm = ls --no-merges
-	# ls but without graph
-	lsng = log --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d'
 	# log branch + parents
 	lsbo = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --first-parent
+	ln = log --oneline
 	
 	st = status
 	grep = grep -Ii
@@ -28,14 +27,13 @@
 	amend-all = "!f() { git add . && git commit --amend --no-edit; }; f"
 	amend = commit --amend --no-edit
 
-	show-commit = "!f() { id=\"$(git lsng |fzf |cut -d ' ' -f 1)\"; [ -n \"$id\" ] && git show \"$id\"; }; f"
-	show-files = "!f() { id=\"$(git lsng |fzf |cut -d ' ' -f 1)\"; [ -n \"$id\" ] && git show --name-only \"$id\"; }; f"
+	show-commit = "!f() { . $(dirname $(dirname $(readlink -f \"$HOME/.gitconfig\")))/functions/git.sh ; __git_show_commit ; }; f"
+	show-files = "!f() { . $(dirname $(dirname $(readlink -f \"$HOME/.gitconfig\")))/functions/git.sh ; __git_show_files ; }; f"
 
-	fixup-select-commit = "!f() { id=\"$(git lsng |fzf |cut -d ' ' -f 1)\"; [ -n \"$id\" ] && git commit --fixup \"$id\"; }; f"
-	fixup-rebase-branch = "!f() { id=\"$(git lsng |fzf |cut -d ' ' -f 1)\"; [ -n \"$id\" ] && git rebase --interactive --autosquash \"$id\"; }; f"
-	rebase-interactive = "!f() { id=\"$(git lsng |fzf |cut -d ' ' -f 1)\"; [ -n \"$id\" ] && git rebase --interactive \"$id\"; }; f"
-	ln = log --oneline
-	rebase-change-parent = "!f() { . $(dirname $(dirname $(readlink -f \"$HOME/.gitconfig\")))/functions/git-rebase-change-parent.sh ; git_rebase_change_parent ; }; f"
+	fixup-select-commit = "!f() { . $(dirname $(dirname $(readlink -f \"$HOME/.gitconfig\")))/functions/git.sh ; __git_fixup_select_commit ; }; f"
+	fixup-rebase-branch = "!f() { . $(dirname $(dirname $(readlink -f \"$HOME/.gitconfig\")))/functions/git.sh ; __git_fixup_rebase_branch ; }; f"
+	rebase-interactive = "!f() { . $(dirname $(dirname $(readlink -f \"$HOME/.gitconfig\")))/functions/git.sh ; __git_rebase_interactive ; }; f"
+	rebase-change-parent = "!f() { . $(dirname $(dirname $(readlink -f \"$HOME/.gitconfig\")))/functions/git.sh ; __git_rebase_change_parent ; }; f"
 
 	wip-save = "!f() { git add . && git wip-save-staged; }; f" 
 	wip-save-staged = "!f() { git commit -m 'wip: ...' --no-verify; }; f" 
