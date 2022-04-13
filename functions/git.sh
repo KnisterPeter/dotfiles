@@ -9,60 +9,60 @@ ___select_commit_from_all_branches() {
 }
 
 __git_show_commit() {
-  id="$(___select_commit_from_current_branch)"
-  if [ -z "$id" ]; then
+  sha="$(___select_commit_from_current_branch)"
+  if [ -z "$sha" ]; then
     exit
   fi
 
-  git show "$id"
+  git show "$sha"
 }
 
 __git_show_files() {
-  id="$(___select_commit_from_current_branch)"
-  if [ -z "$id" ]; then
+  sha="$(___select_commit_from_current_branch)"
+  if [ -z "$sha" ]; then
     exit
   fi
 
-  git show --name-only "$id"
+  git show --name-only "$sha"
 }
 
 __git_fixup_select_commit() {
-  id="$(___select_commit_from_current_branch)"
-  if [ -z "$id" ]; then
+  sha="$(___select_commit_from_current_branch)"
+  if [ -z "$sha" ]; then
     exit
   fi
 
-  git commit --fixup "$id"
+  git commit --fixup "$sha"
 }
 
 __git_fixup_rebase_branch() {
-  id="$(___select_commit_from_current_branch)"
-  if [ -z "$id" ]; then
+  sha="$(___select_commit_from_current_branch)"
+  if [ -z "$sha" ]; then
     exit
   fi
 
-  git rebase --interactive --autosquash "$id"
+  git rebase --interactive --autosquash "$sha"
 }
 
 __git_rebase_interactive() {
-  id="$(___select_commit_from_current_branch)"
-  if [ -z "$id" ]; then
+  sha="$(___select_commit_from_current_branch)"
+  if [ -z "$sha" ]; then
     exit
   fi
   
-  git rebase --interactive "$id"
+  git rebase --interactive "$sha"
 }
 
 __git_rebase_change_parent() {
-  id="$(___select_commit_from_current_branch)"
-  if [ -z "$child" ] ; then
+  child_sha="$(___select_commit_from_all_branches)"
+  if [ -z "$child_sha" ] ; then
     exit
   fi
 
-  new_parent="$(git la --color |fzf --layout=reverse-list --ansi |cut -d ' ' -f 1)"
-  if [ -z "$new_parent" ] ; then
+  new_parent_sha="$(___select_commit_from_all_branches)"
+  if [ -z "$new_parent_sha" ] ; then
     exit
   fi
 
-  git rebase --onto "$new_parent" "$child"^
+  git rebase --onto "$new_parent_sha" "$child_sha"^
 }
