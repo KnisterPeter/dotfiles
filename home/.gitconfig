@@ -33,7 +33,7 @@
 	fixup-select-commit = "!f() { . $(dirname $(dirname $(readlink -f \"$HOME/.gitconfig\")))/functions/git.sh ; __git_fixup_select_commit ; }; f"
 	fixup-rebase-branch = "!f() { . $(dirname $(dirname $(readlink -f \"$HOME/.gitconfig\")))/functions/git.sh ; __git_fixup_rebase_branch ; }; f"
 	rebase-interactive = "!f() { . $(dirname $(dirname $(readlink -f \"$HOME/.gitconfig\")))/functions/git.sh ; __git_rebase_interactive ; }; f"
-	rebase-change-parent = "!f() { . $(dirname $(dirname $(readlink -f \"$HOME/.gitconfig\")))/functions/git.sh ; __git_rebase_change_parent ; }; f"
+	rebase-change-parent = "!f() { . $(dirname $(dirname $(readlink -f \"$HOME/.gitconfig\")))/functions/git.sh ; __git_rebase_change_parent $1 ; }; f"
 
 	wip-save = "!f() { git add . && git wip-save-staged; }; f" 
 	wip-save-staged = "!f() { git commit -m 'wip: ...' --no-verify; }; f" 

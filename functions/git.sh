@@ -8,6 +8,10 @@ ___select_commit_from_all_branches() {
   git la --color |fzf --layout=reverse-list --ansi |sed -e 's/^[| *]\+//' |cut -d " " -f 1
 }
 
+___select_commit_from_branch() {
+  git ls "$1" --color |fzf --layout=reverse-list --ansi |sed -e 's/^[| *]\+//' |cut -d ' ' -f 1
+}
+
 __git_show_commit() {
   sha="$(___select_commit_from_current_branch)"
   if [ -z "$sha" ]; then
@@ -54,12 +58,14 @@ __git_rebase_interactive() {
 }
 
 __git_rebase_change_parent() {
-  child_sha="$(___select_commit_from_all_branches)"
+  target_branch="${1:-origin/master}"
+
+  child_sha="$(___select_commit_from_current_branch)"
   if [ -z "$child_sha" ] ; then
     exit
   fi
 
-  new_parent_sha="$(___select_commit_from_all_branches)"
+  new_parent_sha="$(___select_commit_from_branch "$target_branch")"
   if [ -z "$new_parent_sha" ] ; then
     exit
   fi
