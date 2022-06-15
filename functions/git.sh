@@ -45,7 +45,7 @@ __git_fixup_rebase_branch() {
     exit
   fi
 
-  git rebase --interactive --autosquash "$sha"
+  git rebase --interactive --autosquash "$sha"^
 }
 
 __git_rebase_interactive() {
@@ -54,7 +54,7 @@ __git_rebase_interactive() {
     exit
   fi
   
-  git rebase --interactive "$sha"
+  git rebase --interactive "$sha"^
 }
 
 __git_rebase_change_parent() {
