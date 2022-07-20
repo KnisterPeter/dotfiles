@@ -7,7 +7,8 @@
 	diff = auto
 	status = auto
 [core]
-	editor = code --wait
+	#editor = code --wait
+	editor = vim
 [push]
 	default = simple
 [alias]
@@ -24,8 +25,9 @@
 	st = status
 	grep = grep -Ii
 
-	amend-all = "!f() { git add . && git commit --amend --no-edit; }; f"
 	amend = commit --amend --no-edit
+	amend-all = "!f() { git add . && git amend; }; f"
+	amend-all-force-push = "!f() { git amend-all && git fpush; }; f"
 
 	show-commit = "!f() { . $(dirname $(dirname $(readlink -f \"$HOME/.gitconfig\")))/functions/git.sh ; __git_show_commit ; }; f"
 	show-files = "!f() { . $(dirname $(dirname $(readlink -f \"$HOME/.gitconfig\")))/functions/git.sh ; __git_show_files ; }; f"
