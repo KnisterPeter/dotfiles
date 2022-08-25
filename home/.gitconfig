@@ -33,7 +33,7 @@
 	show-files = "!f() { . $(dirname $(dirname $(readlink -f \"$HOME/.gitconfig\")))/functions/git.sh ; __git_show_files ; }; f"
 
 	fixup-select-commit = "!f() { . $(dirname $(dirname $(readlink -f \"$HOME/.gitconfig\")))/functions/git.sh ; __git_fixup_select_commit ; }; f"
-	fixup-rebase-branch = "!f() { . $(dirname $(dirname $(readlink -f \"$HOME/.gitconfig\")))/functions/git.sh ; __git_fixup_rebase_branch ; }; f"
+	fixup-rebase-branch = "!f() { . $(dirname $(dirname $(readlink -f \"$HOME/.gitconfig\")))/functions/git.sh ; __git_fixup_rebase_branch $1 ; }; f"
 	rebase-interactive = "!f() { . $(dirname $(dirname $(readlink -f \"$HOME/.gitconfig\")))/functions/git.sh ; __git_rebase_interactive ; }; f"
 	rebase-change-parent = "!f() { . $(dirname $(dirname $(readlink -f \"$HOME/.gitconfig\")))/functions/git.sh ; __git_rebase_change_parent $1 ; }; f"
 
@@ -50,6 +50,7 @@
 [commit]
 	gpgSign = true
 	verbose = true
+	template = /home/markusw/.gitmessage
 [pull]
 	rebase = true
 [rebase]
@@ -57,4 +58,8 @@
 
 [init]
 	defaultBranch = main
+[merge]
+	tool = code
+[mergetool "code-insiders"]
+	cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
 

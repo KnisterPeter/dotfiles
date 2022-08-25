@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
 ___select_commit_from_current_branch() {
-  git ls --color |fzf --layout=reverse-list --ansi |sed -e 's/^[| *]\+//' |cut -d ' ' -f 1
+  git ls --color |fzf --layout=reverse-list --no-sort --ansi |sed -e 's/^[| *]\+//' |cut -d ' ' -f 1
 }
 
 ___select_commit_from_all_branches() {
-  git la --color |fzf --layout=reverse-list --ansi |sed -e 's/^[| *]\+//' |cut -d " " -f 1
+  git la --color |fzf --layout=reverse-list --no-sort --ansi |sed -e 's/^[| *]\+//' |cut -d " " -f 1
 }
 
 ___select_commit_from_branch() {
-  git ls "$1" --color |fzf --layout=reverse-list --ansi |sed -e 's/^[| *]\+//' |cut -d ' ' -f 1
+  git ls "$1" --color |fzf --layout=reverse-list --no-sort --ansi |sed -e 's/^[| *]\+//' |cut -d ' ' -f 1
 }
 
 __git_show_commit() {
@@ -40,12 +40,16 @@ __git_fixup_select_commit() {
 }
 
 __git_fixup_rebase_branch() {
-  sha="$(___select_commit_from_current_branch)"
-  if [ -z "$sha" ]; then
-    exit
+  ref="$1"
+  if [ -z "$ref" ] ; then
+    ref="$(___select_commit_from_current_branch)"
+    if [ -z "$ref" ]; then
+      exit
+    fi
+    ref="$ref^"
   fi
 
-  git rebase --interactive --autosquash "$sha"^
+  git rebase --interactive --autosquash "$ref"
 }
 
 __git_rebase_interactive() {
