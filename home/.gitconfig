@@ -41,9 +41,7 @@
 	wip-save-staged = "!f() { git commit -m 'wip: ...' --no-verify; }; f" 
 	wip-restore = "!f() { [ $(git log --oneline -1 --grep='wip:' |wc -l) -gt 0 ] && git reset HEAD~1 || echo 'No work-in-progress found on branch'; }; f"
 
-	reom = "!f() { git fetch && git rebase origin/master; }; f"
 	fpush = push --force-with-lease
-	reomy = "!f() { git reom && yarn; }; f"
 
 	patch-url = "!f() { curl -L "$1" | git am -3; }; f"
 
@@ -58,8 +56,6 @@
 
 [init]
 	defaultBranch = main
-[merge]
-	tool = code
-[mergetool "code-insiders"]
-	cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
 
+[includeIf "gitdir:~/source/xing/**"]
+	path = .gitconfig.private.xing
