@@ -65,6 +65,10 @@ alias la='ls -a'
 
 export EDITOR="vim"
 
+if [[ $(uname -r) =~ (m|M)icrosoft ]]; then
+  export INSIDE_WSL="true"
+fi
+
 ################################################################################
 # Completions
 

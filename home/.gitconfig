@@ -1,11 +1,14 @@
 [user]
 	name = Markus Wolf
 	email = mail@markus-wolf.de
-	signingkey = 46051C9BE153B7A5
+	#signingkey = 46051C9BE153B7A5
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKmc4ZRvr781LRxoPTt5zPIyFMnqJsdAVJnLHwpzLp/B
+
 [color]
 	branch = auto
 	diff = auto
 	status = auto
+
 [core]
 	#editor = code --wait
 	editor = vim
@@ -48,7 +51,7 @@
 [commit]
 	gpgSign = true
 	verbose = true
-	template = /home/markusw/.gitmessage
+
 [pull]
 	rebase = true
 [rebase]
@@ -59,3 +62,6 @@
 
 [includeIf "gitdir:~/source/xing/**"]
 	path = .gitconfig.private.xing
+
+[gpg]
+	format = ssh

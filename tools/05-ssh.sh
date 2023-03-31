@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-if [ -z "$SSH_AUTH_SOCK" ]; then
-    eval "$(ssh-agent)" > /dev/null
+if [ -z "$INSIDE_WSL" ]; then
+    if [ -z "$SSH_AGENT_PID" ]; then
+        eval "$(ssh-agent)" > /dev/null
+    fi
 fi
-
