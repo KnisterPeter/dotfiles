@@ -41,7 +41,7 @@ if [ -n "$to_install" ] ; then
         sudo dnf install -y $to_install
     else
         echo "Unknown system"
-	exit 1
+        exit 1
     fi
 fi
 
