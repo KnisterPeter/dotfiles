@@ -118,3 +118,5 @@ done
 
 # [[ -s "/home/markusw/.gvm/scripts/gvm" ]] && source "/home/markusw/.gvm/scripts/gvm"
 # eval "$(rbenv init -)"
+
+eval "$(direnv hook bash)"

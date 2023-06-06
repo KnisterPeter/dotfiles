@@ -6,6 +6,11 @@ if ! which curl 2> /dev/null; then
     to_install="$to_install curl"
 fi
 
+if ! which zip 2> /dev/null; then
+    echo "Missing zip."
+    to_install="$to_install zip"
+fi
+
 if ! which unzip 2> /dev/null; then
     echo "Missing unzip."
     to_install="$to_install unzip"
@@ -30,6 +35,17 @@ if ! which fzf 2> /dev/null; then
     echo "Missing fzf."
     to_install="$to_install fzf"
 fi
+
+if ! which direnv 2> /dev/null; then
+    echo "Missing direnv."
+    to_install="$to_install direnv"
+fi
+
+if [ ! -f /usr/lib/go-1.19/bin/go ] ; then
+    echo "Missing go."
+    to_install="$to_install golang-1.19-go"
+fi
+export PATH="$PATH:/usr/lib/go-1.19/bin"
 
 if [ -n "$to_install" ] ; then
     if which apt 2> /dev/null ; then
