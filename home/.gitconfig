@@ -55,6 +55,7 @@
 	rebase = true
 [rebase]
 	autoStash = true
+	updateRefs = true
 
 [init]
 	defaultBranch = main
