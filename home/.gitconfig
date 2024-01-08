@@ -47,6 +47,8 @@
 
 	patch-url = "!f() { curl -L "$1" | git am -3; }; f"
 
+	save-clean = "clean -dxf --exclude=.env"
+
 [commit]
 	gpgSign = true
 	verbose = true
