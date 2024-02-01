@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -n "Setup SSH ..."
+echo -n "  🔹 SSH"
 
 if [ -n "$INSIDE_WSL" ]; then
     if [ -S "$HOME/.1password/agent.sock" ] ;then
@@ -12,4 +12,4 @@ if [ -n "$INSIDE_WSL" ]; then
     fi
 fi
 
-echo "✔️"
+echo ""

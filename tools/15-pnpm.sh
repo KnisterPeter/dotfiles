@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -n "Setup pnpm ..."
+echo -n "  🔹 pnpm"
 
 export PNPM_HOME="/home/markusw/.local/share/pnpm"
 case ":$PATH:" in
@@ -8,4 +8,4 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
-echo "✔️"
+echo ""

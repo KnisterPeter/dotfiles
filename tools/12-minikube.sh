@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -n "Setup minikube ..."
+echo -n "  🔹 minikube"
 
 if which minikube > /dev/null ; then
     # shellcheck disable=SC1090
@@ -9,4 +9,4 @@ if which minikube > /dev/null ; then
     alias mkubectl='minikube kubectl'
 fi
 
-echo "✔️"
+echo ""

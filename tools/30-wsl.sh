@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [ -n "$INSIDE_WSL" ]; then
-    echo -n "Setup WSL ... "
+    echo -n "  🔹 WSL"
 
     # Adding wsl-open as a browser for Bash for Windows
     if [[ -z $BROWSER ]]; then
@@ -19,5 +19,5 @@ if [ -n "$INSIDE_WSL" ]; then
     ## shellcheck disable=SC1091
     #source "$HOME/.agent-bridge.sh"
 
-    echo "✔️"
+    echo ""
 fi

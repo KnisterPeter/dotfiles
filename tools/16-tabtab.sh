@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -n "Setup tabtab ..."
+echo -n "  🔹 tabtab"
 
 # tabtab source for packages
 # uninstall by removing these lines
@@ -9,4 +9,4 @@ if [ -f ~/.config/tabtab/bash/__tabtab.bash ] ; then
   source ~/.config/tabtab/bash/__tabtab.bash
 fi
 
-echo "✔️"
+echo ""

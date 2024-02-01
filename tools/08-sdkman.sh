@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -n "Setup SDKMan ..."
+echo -n "  🔹 SDKMan"
 
 if which node > /dev/null ; then
     export SDKMAN_DIR="$HOME/.sdkman"
@@ -8,4 +8,4 @@ if which node > /dev/null ; then
     [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 fi
 
-echo "✔️"
+echo ""

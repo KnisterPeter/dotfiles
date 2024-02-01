@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -n "Setup ~/bin ..."
+echo -n "  🔹 ~/bin"
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] && [ "$(echo "$PATH" | grep -cm1 "$HOME/bin")" -eq 0 ] ; then
@@ -12,4 +12,4 @@ if [ -d "$HOME/.local/bin" ] && [ "$(echo "$PATH" | grep -cm1 "$HOME/.local/bin"
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-echo "✔️"
+echo ""

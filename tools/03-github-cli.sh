@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-echo -n "Setup GitHub CLI ..."
+echo -n "  🔹 GitHub CLI"
 
 eval "$(gh completion -s bash)"
 
-echo "✔️"
+echo ""
