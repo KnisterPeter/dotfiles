@@ -13,7 +13,6 @@ if [ -n "$INSIDE_WSL" ]; then
     # enable windows ssh for git usage
     # They can access the windows ssh-agent and
     # use the windows ssh config
-    git config --global core.sshCommand ssh.exe
     alias ssh='ssh.exe'
     alias ssh-add='ssh-add.exe'
     
