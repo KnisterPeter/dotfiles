@@ -13,6 +13,8 @@ create_1password_session() {
 }
 
 if [ "$INSTALL_SECRETS" != "false" ] ; then
+    echo -n "Install 1Password Secrets ... "
+
     if [ ! -f "$HOME/.ssh/id_rsa" ] ; then
         create_1password_session
         mkdir -p "$HOME/.ssh"
@@ -26,4 +28,7 @@ if [ "$INSTALL_SECRETS" != "false" ] ; then
         gpg --import /tmp/gpg-key
         rm /tmp/gpg-key
     fi
+
+    echo "✔️"
 fi
+

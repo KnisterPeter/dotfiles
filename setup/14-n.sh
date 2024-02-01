@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
-if ! which n 2> /dev/null ; then
+echo -n "Install n ... "
+
+if ! which n > /dev/null 2>&1 ; then
     echo "not not found. Installing..."
     volta install n
 fi
+
+echo "✔️"

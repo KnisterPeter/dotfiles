@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
-if ! which terraform 2> /dev/null ; then
-    if which apt 2> /dev/null ; then
+echo -n "Install Terraform ... "
+
+if ! which terraform > /dev/null 2>&1 ; then
+    if which apt > /dev/null 2>&1 ; then
         echo "About to install system dependencies"
 
         sudo apt-get update
@@ -19,3 +21,5 @@ if ! which terraform 2> /dev/null ; then
         exit 1
     fi
 fi
+
+echo "✔️"

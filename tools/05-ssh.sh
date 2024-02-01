@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-if [ -z "$INSIDE_WSL" ]; then
+echo -n "Setup SSH ..."
+
+if [ -n "$INSIDE_WSL" ]; then
     if [ -S "$HOME/.1password/agent.sock" ] ;then
         export SSH_AUTH_SOCK=~/.1password/agent.sock
     else
@@ -9,3 +11,5 @@ if [ -z "$INSIDE_WSL" ]; then
         fi
     fi
 fi
+
+echo "✔️"

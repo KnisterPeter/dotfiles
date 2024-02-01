@@ -71,5 +71,8 @@
 [gpg "ssh"]
 	allowedSignersFile = ~/.git-ssh-signers
 
+[include]
+	path = ~/.gitconfig.local
+
 [includeIf "gitdir:~/source/statista/"]
   path = ~/source/statista/.gitconfig
