@@ -2,10 +2,10 @@
 
 echo -n "Install Node.js ... "
 
-if ! which node > /dev/null 2>&1 ; then
+if ! volta list --quiet | grep -i "node" > /dev/null 2>&1 ; then
   volta install --quiet node
 fi
-if ! which npm > /dev/null 2>&1 ; then
+if ! volta list --quiet | grep -i "npm" > /dev/null 2>&1 ; then
   volta install --quiet npm
 fi
 
