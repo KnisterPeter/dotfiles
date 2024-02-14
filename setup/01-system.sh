@@ -43,11 +43,11 @@ if ! which direnv > /dev/null 2>&1; then
     to_install="$to_install direnv"
 fi
 
-if [ ! -f /usr/lib/go-1.19/bin/go ] ; then
+if [ ! -f /usr/lib/go-1.20/bin/go ] ; then
     echo "Missing go."
-    to_install="$to_install golang-1.19-go"
+    to_install="$to_install golang-1.20-go"
 fi
-export PATH="$PATH:/usr/lib/go-1.19/bin"
+export PATH="$PATH:/usr/lib/go-1.20/bin"
 
 if [ -n "$to_install" ] ; then
     if which apt > /dev/null 2>&1 ; then
