@@ -116,7 +116,7 @@ for file in $(echo "$ROOT"/functions/*) ; do
   source "$file"
 done
 
-# [[ -s "/home/markusw/.gvm/scripts/gvm" ]] && source "/home/markusw/.gvm/scripts/gvm"
+# [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 # eval "$(rbenv init -)"
 
 eval "$(direnv hook bash)"
