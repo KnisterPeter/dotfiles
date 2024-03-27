@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 ROOT="$(dirname "$(readlink -f "$(pwd)/$0")")"
 # shellcheck disable=SC2034

@@ -3,10 +3,11 @@
 echo -n "  🔹 SSH"
 
 if [ -n "$INSIDE_WSL" ]; then
-    if [ -S "$HOME/.1password/agent.sock" ] ;then
-        export SSH_AUTH_SOCK=~/.1password/agent.sock
+    if ssh-add.exe -l > /dev/null 2>&1 ; then
+        echo -n " - from Windows 1Password agent"
     else
         if [ -z "$SSH_AGENT_PID" ]; then
+            echo -n " - starting new agent"
             eval "$(ssh-agent)" > /dev/null
         fi
     fi
