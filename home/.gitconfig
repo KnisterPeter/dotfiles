@@ -62,9 +62,6 @@
 [init]
 	defaultBranch = main
 
-[includeIf "gitdir:~/source/xing/**"]
-	path = .gitconfig.private.xing
-
 [gpg]
 	format = ssh
 
