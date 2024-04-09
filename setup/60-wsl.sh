@@ -4,38 +4,13 @@ if [ "$INSIDE_WSL" = "true" ]; then
 
     echo -n "Configure WSL ... "
 
-    to_install=
-    # socat is not required with the alias setup
-    # if ! which socat > /dev/null 2>&1; then
-    #     echo "Missing socat."
-    #     to_install="$to_install socat"
-    # fi
-
-    if [ -n "$to_install" ] ; then
-        if which apt > /dev/null 2>&1 ; then
-            sudo apt update
-            # shellcheck disable=SC2086
-            sudo apt install -yy $to_install
-        elif which dnf > /dev/null 2>&1 ; then
-            # shellcheck disable=SC2086
-            sudo dnf install -y $to_install
-        else
-            echo "Unknown system"
-            exit 1
-        fi
-    fi
-
-    # npiperelay is not required with the alias setup
-    # if ! which npiperelay.exe > /dev/null 2>&1; then
-    #   mkdir ~/source/npiperelay
-    #   pushd ~/source/npiperelay
-    #   wget https://github.com/jstarks/npiperelay/archive/refs/heads/master.zip
-    #   unzip master.zip
-    #   rm master.zip
-    #   cd npiperelay-master
-    #   GOOS=windows go build -o "$HOME/bin/npiperelay.exe"
-    #   popd
-    # fi
+    # manual setup
+    # 1. install 1password in windows
+    # 2. setup openssh in windows (newer version)
+    # 3. setup ssh config with IdentitiesOnly and public key on windows
+    # 4. copy public keys into windows .ssh folder
+    # 5. put ssh config into wsl .ssh folder as well (e.g. for github cli)
+    # 6. locate AppData/Local/1Password/app/8/op-ssh-sign-wsl and give to this prompt
 
     # enable windows ssh for git usage
     # They can access the windows ssh-agent and
@@ -53,6 +28,17 @@ if [ "$INSIDE_WSL" = "true" ]; then
 
     if ! which wsl-open > /dev/null 2>&1; then
         npm install --global wsl-open
+    fi
+
+    # install wsl sudo
+    if [[ ! -d /etc/pam_wsl_hello/ ]] ; then
+        mkdir -p /tmp/wsl-sudo
+        pushd /tmp/wsl-sudo || exit
+        curl -fsSL -o "release.tar.gz" https://github.com/nullpo-head/WSL-Hello-sudo/releases/download/v2.0.0/release.tar.gz
+        tar xzf release.tar.gz
+        cd release || exit
+        ./install.sh
+        popd || exit
     fi
 
     echo "✔️"
