@@ -2,7 +2,10 @@
 
 echo -n "  🔹 Node.js"
 
-if which node > /dev/null ; then
+version="$(node -v 2> /dev/null)"
+echo -n " (${version})"
+
+if [[ -n "${version}" ]] ; then
     # shellcheck disable=SC1090
     source <(node --completion-bash)
 fi
