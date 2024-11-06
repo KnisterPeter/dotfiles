@@ -4,11 +4,7 @@ if [ -n "$INSIDE_WSL" ]; then
     echo -n "  🔹 WSL"
 
     # Adding wsl-open as a browser for Bash for Windows
-    if [[ -z $BROWSER ]]; then
-        export BROWSER=wsl-open
-    else
-        export BROWSER=$BROWSER:wsl-open
-    fi
+    export BROWSER=wsl-open
 
     # enable windows ssh for git usage
     # They can access the windows ssh-agent and
