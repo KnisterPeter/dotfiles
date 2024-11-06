@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+disk-usage() {
+    du --max-depth 1 -ch | sort -h
+}
