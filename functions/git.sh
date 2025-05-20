@@ -94,3 +94,13 @@ __git_rebase_change_parent() {
 
   git rebase --onto "$new_parent_sha" "$child_sha"^
 }
+
+__git_drop_changes() {
+  git stash push --keep-index --include-untracked --message=drop-stash --quiet
+  stash="$(git stash list | grep 'drop-stash' | sed -e 's|:.*||')"
+  if [ -n "$stash" ]; then
+    git stash drop "$stash" --quiet
+  else
+    echo "No changes found to drop."
+  fi
+}

@@ -51,6 +51,7 @@
 	patch-url = "!f() { curl -L "$1" | git am -3; }; f"
 
 	safe-clean = "clean -dxf --exclude='/.env'"
+	drop-changes = "!f() { . $(dirname $(dirname $(readlink -f \"$HOME/.gitconfig\")))/functions/git.sh ; __git_drop_changes ; }; f"
 
 [commit]
 	gpgSign = true
