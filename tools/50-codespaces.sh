@@ -5,9 +5,6 @@
 #
 
 if [ "$GITHUB_USER" = "markus-wolf_statista" ] ; then
-	# git config set --global user.name "Markus Wolf"
-	# git config set --global credential.helper "/.codespaces/bin/gitcredential_github.sh"
-	# git config set --global gpg.program "/.codespaces/bin/gh-gpgsign"
-	git config unset user.signingkey
-	git config unset commit.gpgsign
+	git config unset --global user.signingkey
+	git config unset --global commit.gpgsign
 fi
