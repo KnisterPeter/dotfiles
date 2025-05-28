@@ -5,6 +5,7 @@
 #
 
 if [ "$GITHUB_USER" = "markus-wolf_statista" ] ; then
+	git config unset --global user.email
 	git config unset --global user.signingkey
 	git config unset --global commit.gpgsign
 fi
