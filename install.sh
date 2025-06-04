@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-ROOT="$(dirname "$(readlink -f "$(pwd)/$0")")"
+THIS="$0"
+[[ "${THIS}" != /* ]] && THIS="$(pwd)/${THIS}"
+ROOT="$(dirname "$(readlink -f "${THIS}")")"
 # shellcheck disable=SC2034
 INSTALL_SECRETS=${1:-false}
 
