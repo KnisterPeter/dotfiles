@@ -119,4 +119,4 @@ done
 # [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 # eval "$(rbenv init -)"
 
-eval "$(direnv hook bash)"
+which direnv > /dev/null && eval "$(direnv hook bash)"
