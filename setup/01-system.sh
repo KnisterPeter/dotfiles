@@ -34,11 +34,9 @@ if [[ ${#to_install[@]} -gt 0 ]] ; then
 
     if which apt-get > /dev/null 2>&1 ; then
         sudo apt-get -qq update
-        # shellcheck disable=SC2086
-        sudo apt-get -qq install -yy "${to_install[*]}"
+        sudo apt-get -qq install -yy "${to_install[@]}"
     elif which dnf > /dev/null 2>&1 ; then
-        # shellcheck disable=SC2086
-        sudo dnf install -y "${to_install[*]}"
+        sudo dnf install -y "${to_install[@]}"
     else
         echo "Unknown system"
         exit 1
