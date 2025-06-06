@@ -15,6 +15,7 @@ if which code > /dev/null ; then
         "gruntfuggly.todo-tree"
         "ms-azuretools.vscode-containers"
         "denoland.vscode-deno"
+        "streetsidesoftware.code-spell-checker"
     )
     installed="$(code --list-extensions)"
 
