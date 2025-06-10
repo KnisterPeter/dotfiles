@@ -4,7 +4,7 @@ echo -n "Prepare OS packages ... "
 
 declare -a to_install
 
-for tool in curl zip unzip gpg sudo fzf direnv xauth ; do
+for tool in curl zip unzip gpg sudo fzf direnv xauth npm ; do
     if ! which "$tool" > /dev/null 2>&1; then
         to_install+=("${tool}")
     fi
