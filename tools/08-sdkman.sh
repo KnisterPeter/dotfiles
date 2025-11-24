@@ -1,13 +1,9 @@
 #!/usr/bin/env bash
 
-echo -n "  🔹 SDKMan (lazy)"
+echo -n "  🔹 SDKMan"
 
-setup-sdkman() {
-    if which node > /dev/null ; then
-        export SDKMAN_DIR="$HOME/.sdkman"
-        # shellcheck disable=SC1091
-        [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-    fi
-}
+export SDKMAN_DIR="$HOME/.sdkman"
+# shellcheck disable=SC1091
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 echo ""
