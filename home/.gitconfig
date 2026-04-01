@@ -10,7 +10,7 @@
 
 [core]
 	#editor = code --wait
-	editor = vim
+	#editor = vim
 [fetch]
 	prune = true
 	pruneTags = true
@@ -48,8 +48,6 @@
 
 	fpush = push --force-with-lease
 
-	patch-url = "!f() { curl -L "$1" | git am -3; }; f"
-
 	safe-clean = "clean -dxf --exclude='/.env'"
 	drop-changes = "!f() { . $(dirname $(dirname $(readlink -f \"$HOME/.gitconfig\")))/functions/git.sh ; __git_drop_changes ; }; f"
 
@@ -71,6 +69,7 @@
 
 [gpg "ssh"]
 	allowedSignersFile = ~/.git-ssh-signers
+	program = "/opt/1Password/op-ssh-sign"
 
 [include]
 	path = ~/.gitconfig.local
