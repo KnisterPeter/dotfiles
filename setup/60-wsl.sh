@@ -30,16 +30,5 @@ if [ "$INSIDE_WSL" = "true" ]; then
         npm install --global wsl-open
     fi
 
-    # install wsl sudo
-    if [[ ! -d /etc/pam_wsl_hello/ ]] ; then
-        mkdir -p /tmp/wsl-sudo
-        pushd /tmp/wsl-sudo || exit
-        curl -fsSL -o "release.tar.gz" https://github.com/nullpo-head/WSL-Hello-sudo/releases/download/v2.0.0/release.tar.gz
-        tar xzf release.tar.gz
-        cd release || exit
-        ./install.sh
-        popd || exit
-    fi
-
     echo "✔️"
 fi

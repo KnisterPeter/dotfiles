@@ -4,7 +4,9 @@ echo -n "Prepare OS packages ... "
 
 declare -a to_install
 
-for tool in curl zip unzip gpg sudo fzf direnv xauth npm ; do
+to_install+=("npm")
+
+for tool in curl wget zip unzip gpg sudo fzf direnv xauth ; do
     if ! which "$tool" > /dev/null 2>&1; then
         to_install+=("${tool}")
     fi
@@ -15,22 +17,24 @@ if [[ ! -f /etc/bash_completion ]] ; then
 fi
 
 # shellcheck disable=SC2155
-declare -r go_pkg="$(apt-cache search 'golang-[.0-9]+$' | tail -n 1 | cut -d ' ' -f 1)"
+go_pkg="$(apt-cache search 'golang-[.0-9]+$' | tail -n 1 | cut -d ' ' -f 1)"
 if ! dpkg --list "${go_pkg}" > /dev/null 2>&1 ; then
     to_install+=("${go_pkg}")
 fi
 
+if [[ "$(id -u)" != "0" ]] ; then
+    echo
+    echo "We need to run with admin rights. You have to authenticate"
+    echo
+    sudo ls >/dev/null
+fi
+
 if [[ ${#to_install[@]} -gt 0 ]] ; then
+    echo
+    echo "--] Installing [--------"
+    echo
     echo "${to_install[*]} ... "
     echo
-    echo "------------------------"
-    echo
-
-    if [[ "$(id -u)" = "0" ]] ; then
-        echo
-        echo "We need to run with admin rights. You have to authenticate"
-        echo
-    fi
 
     if which apt-get > /dev/null 2>&1 ; then
         sudo apt-get -qq update
