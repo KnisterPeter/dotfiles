@@ -104,3 +104,48 @@ __git_drop_changes() {
     echo "No changes found to drop."
   fi
 }
+
+__git_setup_worktree() {
+  repo="$1"
+
+  echo "$repo" | grep -qP '^[A-Za-z\d](?:[A-Za-z\d]|-(?=[A-Za-z\d])){0,38}/[\w.-]+$'
+  if [ $? -ne 0 ] ; then
+    echo "❌ Error: Invalid repository format!"
+    echo "Expected '<owner>/<repository>', got '$repo'."
+    exit 1
+  fi
+
+  echo "🚀 Initializing Git Worktree setup..."
+  echo
+
+  dir="$(basename "$repo")"
+  if ! mkdir "$dir" ; then
+    echo "❌ Error: Failed to create directory $dir!"
+    exit 1
+  fi
+  if ! cd "$dir" ; then
+    echo "❌ Error: Failed to enter directory $dir!"
+    exit 1
+  fi
+  if ! git clone --bare "https://github.com/$repo.git" .bare ; then
+    echo "❌ Error: Failed to clone repository!"
+    exit 1
+  fi
+  echo "gitdir: ./.bare" > .git
+  if ! git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*" ; then
+    echo "❌ Error: Failed to configure Git!"
+    exit 1
+  fi
+  if ! git fetch --all ; then
+    echo "❌ Error: Failed to fetch branches!"
+    exit 1
+  fi
+  if ! git worktree add main ; then
+    echo "❌ Error: Failed to create worktree!"
+    exit 1
+  fi
+
+  echo
+  echo "✅ Setup complete!"
+  echo
+}

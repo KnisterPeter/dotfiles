@@ -51,6 +51,7 @@
 	safe-clean = "clean -dxf --exclude='/.env'"
 	drop-changes = "!f() { . $(dirname $(dirname $(readlink -f \"$HOME/.gitconfig\")))/functions/git.sh ; __git_drop_changes ; }; f"
 
+	setup-worktree = "!f() { . $(dirname $(dirname $(readlink -f \"$HOME/.gitconfig\")))/functions/git.sh ; __git_setup_worktree $1 ; }; f"
 [commit]
 	gpgSign = true
 	verbose = true
