@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-echo -n "  🔹 vscode"
-printed=0
-
 if which code > /dev/null ; then
+    echo -n "  🔹 vscode"
+    printed=0
+
     expected=(
         "github.codespaces"
         "github.vscode-pull-request-github"
@@ -30,8 +30,8 @@ if which code > /dev/null ; then
             code --install-extension "$ext" > /dev/null 2>&1
         fi
     done
-fi
 
-if [[ $printed -eq 0 ]]; then
-    echo ""
+    if [[ $printed -eq 0 ]]; then
+        echo ""
+    fi
 fi

@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-echo -n "  🔹 Terraform"
-
 if which terraform > /dev/null ; then
-    complete -C /usr/bin/terraform terraform
-fi
+    echo -n "  🔹 Terraform"
 
-echo ""
+    complete -C /usr/bin/terraform terraform
+
+    echo ""
+fi

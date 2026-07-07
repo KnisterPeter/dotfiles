@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
-echo -n "  🔹 Android SDK"
+ANDROID_HOME="$HOME/Android/Sdk"
+if [ -d "$ANDROID_HOME" ] ; then
+    echo -n "  🔹 Android SDK"
 
-export ANDROID_HOME="$HOME/Android/Sdk"
-export PATH="$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator"
+    export ANDROID_HOME
+    export PATH="$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator"
 
-echo ""
+    echo ""
+fi

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-echo -n "  🔹 SSH"
-
 if [ -n "$INSIDE_WSL" ]; then
+    echo -n "  🔹 SSH"
+
     if ssh-add.exe -l > /dev/null 2>&1 ; then
         echo -n " - from Windows 1Password agent"
     else
@@ -11,6 +11,6 @@ if [ -n "$INSIDE_WSL" ]; then
             eval "$(ssh-agent)" > /dev/null
         fi
     fi
-fi
 
-echo ""
+    echo ""
+fi
