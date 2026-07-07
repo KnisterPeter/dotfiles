@@ -107,6 +107,10 @@ __git_drop_changes() {
 
 __git_setup_worktree() {
   repo="$1"
+  dir="$2"
+  if [ -z "$dir" ] ; then
+    dir="$(basename "$repo")"
+  fi
 
   echo "$repo" | grep -qP '^[A-Za-z\d](?:[A-Za-z\d]|-(?=[A-Za-z\d])){0,38}/[\w.-]+$'
   if [ $? -ne 0 ] ; then
@@ -118,8 +122,7 @@ __git_setup_worktree() {
   echo "🚀 Initializing Git Worktree setup..."
   echo
 
-  dir="$(basename "$repo")"
-  if ! mkdir "$dir" ; then
+  if ! mkdir -p "$dir" ; then
     echo "❌ Error: Failed to create directory $dir!"
     exit 1
   fi
@@ -127,7 +130,7 @@ __git_setup_worktree() {
     echo "❌ Error: Failed to enter directory $dir!"
     exit 1
   fi
-  if ! git clone --bare "https://github.com/$repo.git" .bare ; then
+  if ! git clone --bare "git@github.com:$repo.git" .bare ; then
     echo "❌ Error: Failed to clone repository!"
     exit 1
   fi
