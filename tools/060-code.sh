@@ -11,8 +11,6 @@ if which code > /dev/null ; then
         "editorconfig.editorconfig"
         "dbaeumer.vscode-eslint"
         "github.vscode-github-actions"
-        "esbenp.prettier-vscode"
-        "gruntfuggly.todo-tree"
         "ms-azuretools.vscode-containers"
         "denoland.vscode-deno"
         "streetsidesoftware.code-spell-checker"
